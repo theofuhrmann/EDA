@@ -32,7 +32,7 @@ int main() {
 			cin >> w;
 			map <string,int>::iterator it = m.find(w);
 			if (it != m.end()) it->second++;
-			else m.insert({w, 0});
+			else m.insert({w, 1});
 		}
 		else {
 			
@@ -40,6 +40,7 @@ int main() {
 			cin >> w;
 			map <string,int>::iterator it = m.find(w);
 			if (it != m.end()) it->second--;
+			if (it->second == 0) m.erase(it);
 		}
 	}
 }
