@@ -1,9 +1,11 @@
 #include <iostream>
-#include <iomanip>
 #include <map>
 using namespace std;
 
 int main() {
+
+	cout.setf(ios::fixed);
+	cout.precision(4);
 
 	map<int,int> m;
 	string op;
@@ -44,10 +46,11 @@ int main() {
 				avg += (it->first * it->second);
 				n += it->second;
 			}
+
 			avg /= n;
 
 			cout << "minimum: " << min->first << ", maximum: " << max->first;
-			cout << ", average: " << fixed << setprecision(4) << avg << endl;
+			cout << ", average: " << avg << endl;
 		}
 	}
 }
