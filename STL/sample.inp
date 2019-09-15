@@ -1,15 +1,11 @@
-minimum?
-store hi
-minimum?
-delete bye
-store hi
-maximum?
-minimum?
-store bye
-minimum?
-delete bye
-delete hi
-delete hi
-maximum?
-delete hi
-maximum?
+number 3
+number 2
+number 3
+delete
+number 97
+delete
+delete
+delete
+delete
+number -23
+delete
