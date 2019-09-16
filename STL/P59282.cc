@@ -9,48 +9,39 @@ int main() {
 
 	map<int,int> m;
 	string op;
-	int i;
-	map<int,int>::iterator min, max;
+	map<int,int>::iterator it;
+	int i,n,s;
+	n = s = 0;
 
 	while (cin >> op) {
 
 		if (op == "number") {
 
 			cin >> i;
-			if (m.size() != 0 and i == min->first) min->second++;
-			else if (m.size() != 0 and i == max->first) max->second++;
-			else {
-
-				m.insert({i,1});
-				min = m.begin();
-				max = prev(m.end());
-			}
+			it = m.find(i);
+			if (it != m.end()) it->second++;
+			else m.insert({i,1});
+			s += i;
+			n++;
 		}
 
 		else {
 
-			if (min->second > 1) min->second--;
-			else min = m.erase(min);
-				
+			if (not m.empty()) {
+
+				n--;
+				s -= m.begin()->first;
+
+				if (m.begin()->second > 1) m.begin()->second--;
+				else m.erase(m.begin());
+			}
 		}
 
-		if (m.size() == 0) cout << "no elements" << endl;
+		if (m.empty()) cout << "no elements" << endl;
 		else {
 
-			int n;
-			double avg;
-			avg	= n = 0;
-
-			for (map<int,int>::const_iterator it = m.begin(); it != m.end(); it++) {
-
-				avg += (it->first * it->second);
-				n += it->second;
-			}
-
-			avg /= n;
-
-			cout << "minimum: " << min->first << ", maximum: " << max->first;
-			cout << ", average: " << avg << endl;
+			cout << "minimum: " << m.begin()->first << ", maximum: " << prev(m.end())->first;
+			cout << ", average: " << double(s)/n << endl;
 		}
 	}
 }
